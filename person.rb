@@ -8,7 +8,7 @@ class Person
   attr_accessor :name, :age
   attr_reader :id
 
-    private: is_of_age?
+    def is_of_age?
     @age >= 18
   end
 
