@@ -1,3 +1,6 @@
+require 'date'
+require './rental'
+
 class Book
   def initialize(title, author)
     @title = title
@@ -6,4 +9,8 @@ class Book
   end
   attr_accessor :title, :author
   attr_reader :rentals
+
+  def add_rental(date = Date.today, person)
+    @rentals.push(Rental.new(date, person, self))
+  end
 end

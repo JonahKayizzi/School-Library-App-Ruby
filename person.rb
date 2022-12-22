@@ -1,4 +1,6 @@
 require './nameable'
+require 'date'
+require './rental'
 
 class Person < Nameable
   def initialize(age, name = 'Unknown', parent_permission: true)
@@ -26,5 +28,9 @@ class Person < Nameable
 
   def correct_name
     @name
+  end
+
+  def add_rental(date = Date.today, book)
+    @rentals.push(Rental.new(date, self, book))
   end
 end
