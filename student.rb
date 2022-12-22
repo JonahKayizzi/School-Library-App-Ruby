@@ -1,8 +1,8 @@
 require './person'
 
 class Student < Person
-  def initialize(age, name, parent_permission: true)
-    super(age, name, parent_permission: parent_permission)
+  def initialize(age, name, parent_permission)
+    super(age, name, parent_permission)
   end
   attr_reader :classroom
 
