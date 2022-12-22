@@ -1,7 +1,7 @@
 require 'date'
 
 class Rental
-  def initialize(date = Date.today, person, book)
+  def initialize(person, book, date = Date.today)
     @date = date
 
     @person = person
