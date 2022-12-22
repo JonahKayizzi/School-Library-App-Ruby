@@ -3,7 +3,7 @@ require 'date'
 require './rental'
 
 class Person < Nameable
-  def initialize(age, name = 'Unknown', parent_permission: true)
+  def initialize(age, name, parent_permission)
     super()
     @id = Random.rand(1..1000)
     @name = name
@@ -30,7 +30,7 @@ class Person < Nameable
     @name
   end
 
-  def add_rental(book, date = Date.today)
+  def add_rental(book, date)
     @rentals.push(Rental.new(date, self, book))
   end
 end

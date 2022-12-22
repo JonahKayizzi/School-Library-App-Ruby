@@ -1,7 +1,7 @@
 require 'date'
 
 class Rental
-  def initialize(person, book, date = Date.today)
+  def initialize(date, person, book)
     @date = date
 
     @person = person
@@ -10,5 +10,5 @@ class Rental
     @book = book
     book.rentals << self unless book.rentals.include?(self)
   end
-  attr_accessor :date
+  attr_accessor :date, :person, :book
 end
