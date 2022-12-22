@@ -50,20 +50,20 @@ class App
     if books.empty?
       puts 'No books found'
     else
-      books.each { |book| puts 'Title: #{book.title}, Author: #{book.author}' }
+      books.each { |book| puts "Title: #{book.title}, Author: #{book.author}" }
     end
   end
 
   def list_people(people)
     if people.empty?
-      puts 'No people found'
+      puts "No people found"
     else
-      people.each { |person| puts '[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}' }
+      people.each { |person| puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}" }
     end
   end
 
   def create_person(people)
-    print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
+    print "Do you want to create a student (1) or a teacher (2)? [Input the number]: "
     option = gets.chomp.to_i
     case option
     when 1
@@ -71,68 +71,68 @@ class App
     when 2
       create_teacher(people)
     else
-      puts 'That is not a valid input'
+      puts "That is not a valid input"
     end
   end
 
   def create_student(people)
-    print 'Age: '
+    print "Age: "
     age = gets.chomp.to_i
-    print 'Name: '
+    print "Name: "
     name = gets.chomp
-    print 'Has parent permission? [Y/N]: '
+    print "Has parent permission? [Y/N]: "
     parent_permission = gets.chomp
-    parent_permission = parent_permission.downcase == 'y'
+    parent_permission = parent_permission.downcase == "y"
     student = Student.new(age, name, parent_permission)
-    puts 'Person created successfully'
+    puts "Person created successfully"
     people.push(student)
   end
 
   def create_teacher(people)
-    print 'Age: '
+    print "Age: "
     age = gets.chomp.to_i
-    print 'Name: '
+    print "Name: "
     name = gets.chomp
-    print 'Specialization: '
+    print "Specialization: "
     specialization = gets.chomp
     teacher = Teacher.new(age, specialization, name)
-    puts 'Person created successfully'
+    puts "Person created successfully"
     people.push(teacher)
   end
 
   def create_book(books)
-    print 'Title: '
+    print "Title: "
     title = gets.chomp
-    print 'Author: '
+    print "Author: "
     author = gets.chomp
     book = Book.new(title, author)
-    puts 'Book created successfully'
+    puts "Book created successfully"
     books.push(book)
   end
 
   def create_rental(books, people)
-    puts 'Select a book from the following list by number'
-    books.each_with_index { |book, index| puts '#{index}) Title: #{book.title}, Author: #{book.author}' }
+    puts "Select a book from the following list by number"
+    books.each_with_index { |book, index| puts "#{index}) Title: #{book.title}, Author: #{book.author}" }
     book_index = gets.chomp.to_i
-    puts 'Select a person from the following list by number (not id)'
+    puts "Select a person from the following list by number (not id)"
     people.each_with_index { |person, index|
-      puts '#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}'
+      puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     }
     person_index = gets.chomp.to_i
-    print 'Date: '
+    print "Date: "
     date = gets.chomp
     rental = Rental.new(date, people[person_index], books[book_index])
-    puts 'Rental created successfully'
+    puts "Rental created successfully"
   end
 
   def list_rentals_for_person_id(books, people)
-    print 'ID of person: '
+    print "ID of person: "
     id = gets.chomp.to_i
-    puts 'Rentals:'
+    puts "Rentals:"
     people.each do |person|
       if person.id == id
         person.rentals.each { |rental|
-          puts 'Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}'
+          puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}"
         }
       end
     end
