@@ -35,7 +35,7 @@ class App
     puts 'Welcome to School Library App!'
     loop do
       show_interactive_console
-      option = gets.chomp.to_i
+      option = gets.chomp
       operation = OPERATIONS[option]
       if operation == :exit
         break
